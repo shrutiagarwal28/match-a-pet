@@ -1,5 +1,7 @@
 # Match-A-Pet
 
+> This is a personal fork of a team project built for a Software Engineering course taught by Professor Gennadiy Civil during my Master's in Computer Science at New York University. The original project was a collaborative effort; this repo reflects my continued work on it, including a Django 4.2 upgrade and deployment to Render.
+
 A web application that connects pet shelters with potential adopters. Shelters can list available pets, and users can browse, favorite, and request adoption. Also supports direct messaging between users and shelters, playdate scheduling between pet owners, and a map of shelter locations.
 
 ## Features
