@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: match-a-pet
+    runtime: python
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
+    startCommand: "gunicorn match_a_pet.wsgi"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true        # Render auto-generates a secure random value
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: match-a-pet-db
+          property: connectionString
+
+databases:
+  - name: match-a-pet-db
+    databaseName: matchapet
+    user: matchapet
