@@ -141,7 +141,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 STATIC_URL = "/static/"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # compresses & caches static files
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"  # compresses static files without strict manifest checking
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
