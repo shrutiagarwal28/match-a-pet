@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from pathlib import Path
-import django_heroku
 import os
 
 
@@ -23,7 +22,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "du1y4mc$+jbzyhovkf9*!@pi^*vef0o1qjh-^c-)dm!8&!fc@o"
+SECRET_KEY = os.environ.get("SECRET_KEY", "du1y4mc$+jbzyhovkf9*!@pi^*vef0o1qjh-^c-)dm!8&!fc@o")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     "map.apps.MapConfig",
     "playdate.apps.PlayDateConfig",
     "crispy_forms",
+    "crispy_bootstrap4",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -122,9 +122,9 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 
 # Static files (CSS, JavaScript, Images)
@@ -142,8 +142,8 @@ LOGIN_URL = "../../login/shelter"
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "nyu.match.a.pet@gmail.com"
-EMAIL_HOST_PASSWORD = "d3usexmachina"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 EMAIL_PORT = 587
 
-django_heroku.settings(locals(), test_runner=False)
+# django-heroku removed; SQLite used for local dev, configure DATABASE_URL for production

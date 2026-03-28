@@ -3,9 +3,9 @@ import requests
 from django.core import serializers
 from accounts.models import User
 
-# Google API KEY AIzaSyC796wfP4gXyVbNt2wpSW6zMUojqenu04w
+import os
 
-mapbox_access_token = "pk.eyJ1Ijoic2hvcm5idWNrbGU5MyIsImEiOiJja2g5b3QxZnEwM3V3MnprM3gxZzlnMTlnIn0.U0IY_rRntdyeFAnW7bCSIQ"
+mapbox_access_token = os.environ.get("MAPBOX_ACCESS_TOKEN", "")
 
 
 def map_func(request):
